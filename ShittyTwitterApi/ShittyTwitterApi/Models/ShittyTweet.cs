@@ -11,5 +11,10 @@ namespace ShittyTwitterApi.Models
         public string Message { get; set; }
         public string Author { get; set; }
         public DateTime Published { get; set; }
+
+        public ShittyTweet() 
+        {
+            Published = DateTime.Now;
+        }
     }
 }
