@@ -1,27 +1,43 @@
 <template>
   <div class="main-content">
-    <header class="jumbotron">
+    <header class="jumbotron centered">
       <h1>Shitty Twitter</h1>
       <p>Go ahead, shitty tweet things!</p>
     </header>
     <div class="container">
-
+      <div class="shitty-tweets" v-for="shittyTweet in shittyTweets" :key="shittyTweet.id">
+        <shitty-tweet
+          :shittyTweet="shittyTweet"
+          />
+      </div> 
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState, mapActions } from 'vuex';
+import ShittyTweet from './ShittyTweet';
 
 export default {
   name: 'HelloWorld',
+  components: {
+    ShittyTweet,
+  },
   data() {
     return {
       post: null,
     }
   },
-  mounted () {
-    axios.get('/api/shittytweets/1').then(response => { this.post = response.data });
+  computed: {
+    ...mapState(['shittyTweets'])
+  },
+  created() {
+    this.getAllTweetsFromApi();
+  },
+  methods: {
+    ...mapActions([
+      'getAllTweetsFromApi',
+    ]),
   },  
 };
 
@@ -43,11 +59,8 @@ li {
 a {
   color: #42b983;
 }
-#tweet-container {
-  margin: 5px auto;
-  padding: 30px;
-  background-color: white;
-  width: 50%;
+header {
   text-align: center;
+  position: relative;
 }
 </style>
