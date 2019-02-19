@@ -1,8 +1,12 @@
 <template>
   <div class="main-content">
     <header class="jumbotron">
-      
+      <h1>Shitty Twitter</h1>
+      <p>Go ahead, shitty tweet things!</p>
     </header>
+    <div class="container">
+
+    </div>
   </div>
 </template>
 
