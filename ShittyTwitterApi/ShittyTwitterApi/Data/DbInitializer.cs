@@ -10,6 +10,7 @@ namespace ShittyTwitterApi.Data
     {
         public static void Initialize(ShittyTwitterContext context)
         {
+            context.Database.EnsureCreated();
             if (context.ShittyTweets.Count() == 0)
             {
                 context.ShittyTweets.Add(new ShittyTweet
